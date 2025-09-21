@@ -9,4 +9,4 @@
 ### Ссылки
 
 - Публичная страница на GitHub Pages:  
-  https://trishin5252.github.io/my-awesome-project.2/
+  - 🌐 [Посмотреть сайт](https://trishin5252.github.io/my-awesome-project.2/)

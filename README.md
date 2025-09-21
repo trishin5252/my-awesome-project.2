@@ -9,4 +9,4 @@
 ### Ссылки
 
 - Публичная страница на GitHub Pages:  
-  https://ваш_логин.github.io/название_репозитория/
+  [https://ваш_логин.github.io/название_репозитория/](https://trishin5252.github.io/my-awesome-project.2/)

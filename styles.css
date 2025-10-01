@@ -1,43 +1,225 @@
-/* BASA: читаемость и предсказуемость размеров */
+/* Дизайн-токены (CSS переменные) */
+:root {
+    /* Палитра */
+    --color-bg: #fff;
+    --color-fg: #0b0b0b;
+    --color-muted: #666;
+    --color-primary: #0a84ff;
+    --color-danger: #b00020;
+    
+    /* Типографика и размеры */
+    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --space-1: 0.25rem;  /* 4px */
+    --space-2: 0.5rem;   /* 8px */
+    --space-3: 1rem;     /* 16px */
+    --space-4: 1.5rem;   /* 24px */
+    --space-5: 2.5rem;   /* 40px */
+    
+    /* Скругления и тени */
+    --radius: 0.75rem;   /* 12px */
+    --shadow: 0 1px 2px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.08);
+    
+    /* Контейнер */
+    --container-width: 70rem; /* 1120px */
+}
 
+/* Тёмная тема: переопределяем только значения токенов */
+body.theme-dark {
+    --color-bg: #0b0b0b;
+    --color-fg: #f5f5f5;
+    --color-muted: #aaa;
+    --color-primary: #6a2fff;
+}
+
+/* Плавная прокрутка к якорям */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Подсветка цели якоря */
+:target {
+    outline: 2px dashed var(--color-primary);
+    outline-offset: 4px;
+}
+
+/* БАЗА: читаемость и предсказуемость размеров */
 * { box-sizing: border-box; }
 
-html, body { margin: 0; padding: 0; } 
-body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.5; }
-
-/* Формы: размеры, отступы, визуальный порядок */ 
-label { display: block; margin: 0.5rem 0 0.25rem; } 
-input, select, textarea, button { 
-    width: 100%; 
-    max-width: 480px; 
-    padding: .5rem .75rem; 
-    border: 1px solid #c6c6c6; 
-    border-radius: 8px; 
-    background: #fff; 
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-body);
+    line-height: 1.5;
 }
 
-/* Кнопка по умолчанию */ 
-button, [type="submit"] { 
-    background: #0a84ff; 
-    color: #fff; 
-    border: none; 
-    cursor: pointer; 
+/* Контейнер для центровки и ограничения ширины */
+.container {
+    width: min(100% - 2 * var(--space-4), var(--container-width));
+    margin-inline: auto;
 }
 
-/* Состояния: клавиатура/мышь/ошибки */ 
-:where(input, select, textarea, button):focus-visible { 
-    outline: 2px solid #0a84ff; 
-    outline-offset: 2px; 
-} 
-button:hover { 
-    filter: brightness(0.95); 
-} 
-:disabled, [aria-disabled="true"] { 
-    opacity: .6; 
-    cursor: not-allowed; 
+/* Вертикальные отступы секций */
+.section {
+    padding-block: var(--space-5);
 }
 
-/* Подсветка ошибочных полей (установите aria-invalid="true") */ 
-[aria-invalid="true"] { 
-    border-color: #b00020; 
+.section__title {
+    margin: 0 0 var(--space-3);
+}
+
+/* Ссылки (LVHA-порядок) */
+a:link {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--color-primary);
+    opacity: 0.8;
+}
+
+a:hover {
+    text-decoration: underline;
+    opacity: 0.9;
+}
+
+a:active {
+    color: var(--color-danger);
+}
+
+/* Формы: размеры, отступы, визуальный порядок */
+label {
+    display: block;
+    margin: var(--space-2) 0 var(--space-1);
+    color: var(--color-fg);
+}
+
+input, select, textarea, button {
+    width: 100%;
+    max-width: 480px;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-muted);
+    border-radius: var(--radius);
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-body);
+}
+
+/* Кнопка по умолчанию */
+button, [type="submit"] {
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2) var(--space-3);
+}
+
+/* Фокус-контуры (доступность) */
+:where(a, button, input, select, textarea):focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Состояния кнопок */
+button:hover {
+    filter: brightness(0.95);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* Недоступные элементы */
+:disabled, [aria-disabled="true"] {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+/* Подсветка ошибочных полей */
+[aria-invalid="true"] {
+    border-color: var(--color-danger);
+}
+
+/* Утилитарные классы */
+.text-muted {
+    color: var(--color-muted);
+}
+
+.bg-primary {
+    background-color: var(--color-primary);
+}
+
+.p-3 {
+    padding: var(--space-3);
+}
+
+.mt-4 {
+    margin-top: var(--space-4);
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Медиа не "выпрыгивают" из контейнеров */
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Медиа не "выпрыгивают" из контейнеров */
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Переключатель темы */
+.theme-toggle {
+    position: fixed;
+    top: var(--space-3);
+    right: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-bg);
+    color: var(--color-fg);
+    border: 1px solid var(--color-muted);
+    border-radius: var(--radius);
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.theme-toggle:hover {
+    background: var(--color-muted);
+    color: var(--color-bg);
+}
+
+.theme-toggle[aria-pressed="true"] {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+}
+
+/* Плавная смена темы */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Системные скроллбары */
+:root {
+    color-scheme: light; /* Светлые скроллбары/контролы по умолчанию */
+}
+
+body.theme-dark {
+    color-scheme: dark; /* Тёмные при активной теме */
 }

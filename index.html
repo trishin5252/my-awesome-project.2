@@ -37,42 +37,43 @@
         }
         
         header {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-bottom: 1px solid #dee2e6;
+            background: var(--color-bg);
+            padding: var(--space-4);
+            border-bottom: 1px solid var(--color-muted);
         }
         
         header a {
             font-size: 1.5rem;
             font-weight: bold;
             text-decoration: none;
-            color: #333;
+            color: var(--color-fg);
         }
         
         nav ul {
             list-style: none;
             padding: 0;
-            margin: 1rem 0 0 0;
+            margin: var(--space-3) 0 0 0;
             display: flex;
-            gap: 1rem;
+            gap: var(--space-3);
         }
         
         main {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: var(--space-5);
         }
         
         footer {
-            background: #f8f9fa;
-            padding: 1rem;
+            background: var(--color-bg);
+            padding: var(--space-4);
             text-align: center;
-            border-top: 1px solid #dee2e6;
-            margin-top: 2rem;
+            border-top: 1px solid var(--color-muted);
+            margin-top: var(--space-5);
         }
     </style>
 </head>
 <body>
+    <!-- Переключатель темы -->
+    <button class="theme-toggle" type="button" aria-pressed="false">��� Тема</button>
+
     <!-- Шапка сайта -->
     <header>
     <a href="/">Company 52</a>
@@ -85,27 +86,28 @@
     </ul>
     </nav>
 </header>
+
 <!-- Уникальное основное содержимое страницы -->
-<main>
+<main class="container">
     <h1>Добро пожаловать в Company 52!</h1>
-    <!-- Секция 1 с якорем -->
-    <section id="services">
-    <h2>Наши услуги</h2>
+    
+    <section id="services" class="section">
+    <h2 class="section__title">Наши услуги</h2>
     <p>Company 52 предоставляет широкий спектр услуг в области веб-разработки и digital-решений.</p>
     <!-- Кнопка открытия модалки -->
     <button id="openDialog" type="button">Написать нам</button>
-</section>
-    <!-- Секция 2 с якорем -->
-    <section id="portfolio">
-    <h2>Портфолио</h2>
+    </section>
+    
+    <section id="portfolio" class="section">
+    <h2 class="section__title">Портфолио</h2>
     <p>Ознакомьтесь с нашими последними проектами и достижениями.</p>
-</section>
-    <!-- Секция 3 с якорем -->
-    <section id="contacts">
-    <h2>Контактная информация</h2>
+    </section>
+    
+    <section id="contacts" class="section">
+    <h2 class="section__title">Контактная информация</h2>
     <p>Свяжитесь с нами для обсуждения вашего проекта.</p>
-    <a href="contacts.html">Подробнее</a> <!-- Ссылка на отдельную страницу -->
-</section>
+    <a href="contacts.html">Подробнее</a>
+    </section>
 </main>
 
 <!-- Модалка с формой -->
@@ -165,5 +167,27 @@
 
     <!-- Подключение JavaScript -->
     <script src="main.js"></script>
+    
+    <!-- Скрипт переключения темы -->
+    <script>
+        const KEY = 'theme';
+        const btn = document.querySelector('.theme-toggle');
+        const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        // Автовыбор: системная тема или сохранённый выбор пользователя
+        if (localStorage.getItem(KEY) === 'dark' || (!localStorage.getItem(KEY) && preferDark)) {
+            document.body.classList.add('theme-dark');
+            btn?.setAttribute('aria-pressed', 'true');
+            btn.textContent = '☀️ Тема';
+        }
+
+        // Переключение по кнопке с сохранением в localStorage
+        btn?.addEventListener('click', () => {
+            const isDark = document.body.classList.toggle('theme-dark');
+            btn.setAttribute('aria-pressed', String(isDark));
+            localStorage.setItem(KEY, isDark ? 'dark' : 'light');
+            btn.textContent = isDark ? '☀️ Тема' : '��� Тема';
+        });
+    </script>
 </body>
 </html>

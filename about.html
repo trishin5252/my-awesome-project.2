@@ -15,42 +15,43 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         header {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-bottom: 1px solid #dee2e6;
+            background: var(--color-bg);
+            padding: var(--space-4);
+            border-bottom: 1px solid var(--color-muted);
         }
         
         header a {
             font-size: 1.5rem;
             font-weight: bold;
             text-decoration: none;
-            color: #333;
+            color: var(--color-fg);
         }
         
         nav ul {
             list-style: none;
             padding: 0;
-            margin: 1rem 0 0 0;
+            margin: var(--space-3) 0 0 0;
             display: flex;
-            gap: 1rem;
+            gap: var(--space-3);
         }
         
         main {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: var(--space-5);
         }
         
         footer {
-            background: #f8f9fa;
-            padding: 1rem;
+            background: var(--color-bg);
+            padding: var(--space-4);
             text-align: center;
-            border-top: 1px solid #dee2e6;
-            margin-top: 2rem;
+            border-top: 1px solid var(--color-muted);
+            margin-top: var(--space-5);
         }
     </style>
 </head>
 <body>
+    <!-- Переключатель темы -->
+    <button class="theme-toggle" type="button" aria-pressed="false">��� Тема</button>
+
     <header>
     <a href="/">Company 52</a>
     <nav>
@@ -61,19 +62,19 @@
     </ul>
     </nav>
 </header>
-    <main>
+    <main class="container">
     <!-- Простые "хлебные крошки" -->
     <nav aria-label="Хлебные крошки">
     <a href="index.html">Главная</a>
     <span>О нас</span>
 </nav>
     <h1>О компании Company 52</h1>
-    <section>
-    <h2>Наша история</h2>
+    <section class="section">
+    <h2 class="section__title">Наша история</h2>
     <p>Company 52 была основана в 2020 году с целью предоставления качественных digital-решений.</p>
     </section>
-    <section>
-    <h2>Наша команда</h2>
+    <section class="section">
+    <h2 class="section__title">Наша команда</h2>
     <p>В Company 52 работает команда опытных специалистов, готовых реализовать любые ваши идеи.</p>
     </section>
 </main>
@@ -81,5 +82,27 @@
     <p>© 2024 Company 52. Все права защищены.</p>
     <p>Телефон: +7 (123) 456-78-90 | Email: info@company52.com</p>
     </footer>
+
+    <!-- Скрипт переключения темы -->
+    <script>
+        const KEY = 'theme';
+        const btn = document.querySelector('.theme-toggle');
+        const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        // Автовыбор: системная тема или сохранённый выбор пользователя
+        if (localStorage.getItem(KEY) === 'dark' || (!localStorage.getItem(KEY) && preferDark)) {
+            document.body.classList.add('theme-dark');
+            btn?.setAttribute('aria-pressed', 'true');
+            btn.textContent = '☀️ Тема';
+        }
+
+        // Переключение по кнопке с сохранением в localStorage
+        btn?.addEventListener('click', () => {
+            const isDark = document.body.classList.toggle('theme-dark');
+            btn.setAttribute('aria-pressed', String(isDark));
+            localStorage.setItem(KEY, isDark ? 'dark' : 'light');
+            btn.textContent = isDark ? '☀️ Тема' : '��� Тема';
+        });
+    </script>
 </body>
 </html>

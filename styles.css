@@ -244,3 +244,46 @@ body.theme-dark {
     border: 0;
     border-radius: var(--radius);
 }
+
+/* Герой-секция с фоновым изображением и градиентом */
+.hero {
+    background: 
+        linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3)),
+        url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+    color: #fff;
+    padding: clamp(2rem, 8vw, 8rem) 1rem;
+    text-align: center;
+    margin-bottom: var(--space-5);
+}
+
+.hero h1 {
+    margin: 0 0 var(--space-3);
+    font-size: clamp(2rem, 5vw, 4rem);
+}
+
+.hero p {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    margin: 0 0 var(--space-4);
+    opacity: 0.9;
+}
+
+/* Responsive изображение */
+.responsive-img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+}
+
+/* Контейнер для видео */
+.media {
+    aspect-ratio: 16/9;
+    width: min(100%, 960px);
+    margin-inline: auto;
+}
+
+.media iframe, .media video {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: var(--radius);
+}

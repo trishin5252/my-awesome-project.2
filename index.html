@@ -6,36 +6,7 @@
     <title>Главная - Company 52</title>
     <meta name="description" content="Главная страница Company 52 - предоставляем качественные услуги">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <!-- Open Graph микроразметка -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Главная - Company 52">
-    <meta property="og:description" content="Главная страница Company 52 - предоставляем качественные услуги">
-    <meta property="og:image" content="https://trishin5252.github.io/my-awesome-project.2/assets/og-image.jpg">
-    <!-- Подключение CSS -->
     <link rel="stylesheet" href="styles.css">
-    <style>
-        dialog { 
-            padding: 1.25rem; 
-            border: none; 
-            border-radius: 12px; 
-            max-width: 500px;
-            width: 90%;
-        } 
-        
-        dialog::backdrop { 
-            background: rgba(0,0,0,.5); 
-        } 
-        
-        .form-actions { 
-            display: flex; 
-            gap: .5rem; 
-            margin-top: 1rem; 
-        }
-        
-        .form-group {
-            margin-bottom: 1rem;
-        }
-    </style>
 </head>
 <body>
     <!-- Переключатель темы -->
@@ -43,8 +14,7 @@
 
     <!-- Шапка сайта -->
     <header>
-        <a href="/">Company 52</a>
-        <!-- Главное меню навигации -->
+        <a href="index.html">Company 52</a>
         <nav>
             <ul>
                 <li><a href="index.html">Главная</a></li>
@@ -63,7 +33,7 @@
         </div>
     </section>
 
-    <!-- Уникальное основное содержимое страницы -->
+    <!-- Основной контент -->
     <main class="container">
         <section id="services" class="section">
             <h2 class="section__title">Наши услуги</h2>
@@ -76,7 +46,6 @@
             <p>Ознакомьтесь с нашими последними проектами и достижениями.</p>
         </section>
         
-        <!-- Видео секция -->
         <section id="video" class="section">
             <h2 class="section__title">О нас в видео</h2>
             <div class="media">
@@ -91,56 +60,33 @@
         <section id="contacts" class="section">
             <h2 class="section__title">Контактная информация</h2>
             <p>Свяжитесь с нами для обсуждения вашего проекта.</p>
-            <a href="contacts.html">Подробнее</a>
+            <a href="contacts.html">Подробнее о контактах</a>
         </section>
     </main>
 
     <!-- Модалка с формой -->
     <dialog id="contactDialog" aria-labelledby="dialogTitle">
-        <h2 id="dialogTitle">Обратная связь - Company 52</h2>
-        
+        <h2 id="dialogTitle">Обратная связь</h2>
         <form id="contactForm" method="dialog" novalidate>
             <div class="form-group">
                 <label for="name">Имя *</label>
-                <input id="name" name="name" type="text" required minlength="2" autocomplete="given-name">
+                <input id="name" name="name" type="text" required minlength="2">
             </div>
-            
             <div class="form-group">
                 <label for="email">Email *</label>
-                <input id="email" name="email" type="email" required autocomplete="email">
+                <input id="email" name="email" type="email" required>
             </div>
-            
             <div class="form-group">
-                <label for="phone">Телефон *</label>
-                <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"
-                       aria-describedby="phoneHelp" placeholder="+7 (___) __-__-__"
-                       required pattern="\+7\s?\(?\d{3}\)?\s?\d{3}-\d{2}-\d{2}">
-                <small id="phoneHelp">Формат: +7 (800) 000-00-00</small>
+                <label for="phone">Телефон</label>
+                <input id="phone" name="phone" type="tel" placeholder="+7 (___) __-__-__">
             </div>
-            
-            <div class="form-group">
-                <label for="date">Дата</label>
-                <input id="date" name="date" type="date">
-            </div>
-            
-            <div class="form-group">
-                <label for="topic">Тема *</label>
-                <select id="topic" name="topic" required>
-                    <option value="">Выберите тему</option>
-                    <option value="question">Вопрос</option>
-                    <option value="order">Заказ</option>
-                    <option value="cooperation">Сотрудничество</option>
-                </select>
-            </div>
-            
             <div class="form-group">
                 <label for="message">Сообщение *</label>
-                <textarea id="message" name="message" rows="4" required minlength="10"></textarea>
+                <textarea id="message" name="message" rows="4" required></textarea>
             </div>
-            
             <div class="form-actions">
                 <button type="button" id="closeDialog">Закрыть</button>
-                <button type="submit">Отправить в Company 52</button>
+                <button type="submit">Отправить</button>
             </div>
         </form>
     </dialog>
@@ -150,23 +96,19 @@
         <p>Телефон: +7 (123) 456-78-90 | Email: info@company52.com</p>
     </footer>
 
-    <!-- Подключение JavaScript -->
     <script src="main.js"></script>
-    
-    <!-- Скрипт переключения темы -->
     <script>
+        // Переключение темы
         const KEY = 'theme';
         const btn = document.querySelector('.theme-toggle');
         const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        // Автовыбор: системная тема или сохранённый выбор пользователя
         if (localStorage.getItem(KEY) === 'dark' || (!localStorage.getItem(KEY) && preferDark)) {
             document.body.classList.add('theme-dark');
             btn?.setAttribute('aria-pressed', 'true');
             btn.textContent = '☀️ Тема';
         }
 
-        // Переключение по кнопке с сохранением в localStorage
         btn?.addEventListener('click', () => {
             const isDark = document.body.classList.toggle('theme-dark');
             btn.setAttribute('aria-pressed', String(isDark));
@@ -174,12 +116,15 @@
             btn.textContent = isDark ? '☀️ Тема' : '��� Тема';
         });
 
-        // Обработчики для обеих кнопок открытия модалки
+        // Модалка
         document.getElementById('openDialog').addEventListener('click', () => {
             document.getElementById('contactDialog').showModal();
         });
         document.getElementById('openDialog2').addEventListener('click', () => {
             document.getElementById('contactDialog').showModal();
+        });
+        document.getElementById('closeDialog').addEventListener('click', () => {
+            document.getElementById('contactDialog').close();
         });
     </script>
 </body>

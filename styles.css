@@ -343,16 +343,6 @@ body.theme-dark {
 }
 
 /* Улучшение видимости полей формы на мобильных */
-@media (max-width: 768px) {
-    .theme-dark input,
-    .theme-dark textarea,
-    .theme-dark select {
-        background: #000000;
-        color: #ffffff;
-        border: 2px solid #444;
-        font-size: 16px; /* Предотвращает зум в iOS */
-        padding: 12px 16px;
-    }
     
     .theme-dark input::placeholder,
     .theme-dark textarea::placeholder {
@@ -380,11 +370,56 @@ body.theme-dark {
 }
 
 /* Дополнительное улучшение для очень маленьких экранов */
-@media (max-width: 480px) {
+}
+
+/* Исправление видимости формы на мобильных */
+@media (max-width: 768px) {
     .theme-dark input,
     .theme-dark textarea,
     .theme-dark select {
-        font-size: 18px;
+        background: #000000;
+        color: #ffffff !important;
+        border: 2px solid #555;
+        font-size: 16px;
         padding: 14px 16px;
+        font-weight: 500;
+    }
+    
+    .theme-dark label {
+        color: #ffffff !important;
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 10px;
+        display: block;
+    }
+    
+    .theme-dark input::placeholder,
+    .theme-dark textarea::placeholder {
+        color: #999 !important;
+        opacity: 1;
+        font-size: 14px;
+    }
+    
+    .form-group {
+        margin-bottom: 24px;
+    }
+}
+
+/* Усиливаем контрастность для очень маленьких экранов */
+@media (max-width: 480px) {
+    .theme-dark label {
+        font-size: 18px;
+        color: #ffffff !important;
+    }
+    
+    .theme-dark input,
+    .theme-dark textarea {
+        font-size: 18px;
+        color: #ffffff !important;
+        background: #000000;
+    }
+    
+    .theme-dark input::placeholder {
+        color: #bbb !important;
     }
 }

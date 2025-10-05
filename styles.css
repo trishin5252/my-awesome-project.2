@@ -444,11 +444,6 @@ body.theme-dark {
 }
 
 /* Исправление цвета текста для кнопок в темной теме */
-.theme-dark .telegram-button {
-    color: #ffffff !important;
-    background: #0088cc;
-    border: 2px solid #0088cc;
-}
 
 .theme-dark .telegram-button:hover {
     background: #0077b5;
@@ -457,10 +452,24 @@ body.theme-dark {
 }
 
 /* Общий стиль для всех кнопок в темной теме */
-.theme-dark button {
-    color: #ffffff;
+
+
+/* Исправление видимости текста кнопки Telegram */
+.telegram-button {
+    color: #ffffff !important;
+    background: #0088cc;
+    border: 2px solid #0088cc;
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
 }
 
-.theme-dark a button {
-    color: #ffffff;
+.telegram-button:hover {
+    background: #0077b5;
+    border-color: #0077b5;
+    color: #ffffff !important;
+    text-decoration: none;
 }

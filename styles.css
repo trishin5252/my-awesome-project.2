@@ -442,3 +442,25 @@ body.theme-dark {
     text-decoration: none;
     color: white;
 }
+
+/* Исправление цвета текста для кнопок в темной теме */
+.theme-dark .telegram-button {
+    color: #ffffff !important;
+    background: #0088cc;
+    border: 2px solid #0088cc;
+}
+
+.theme-dark .telegram-button:hover {
+    background: #0077b5;
+    border-color: #0077b5;
+    color: #ffffff !important;
+}
+
+/* Общий стиль для всех кнопок в темной теме */
+.theme-dark button {
+    color: #ffffff;
+}
+
+.theme-dark a button {
+    color: #ffffff;
+}

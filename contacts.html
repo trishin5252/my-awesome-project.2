@@ -13,6 +13,7 @@
     <meta property="og:image" content="https://trishin5252.github.io/my-awesome-project.2/assets/og-image.jpg">
     <!-- Подключение CSS -->
     <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="menu-styles.css">
     <style>
         header {
             background: var(--color-bg);
@@ -51,15 +52,17 @@
 <body class="theme-dark">
     <!-- Переключатель темы -->
 
-    <header>
-    <a href="/">Company 52</a>
-    <nav>
-    <ul>
-    <li><a href="index.html">Главная</a></li>
-    <li><a href="about.html">О нас</a></li>
-    <li><a href="contacts.html">Контакты</a></li>
-    </ul>
-    </nav>
+<header class="header">
+    <div class="nav-container">
+        <a href="index.html" class="logo">Company 52</a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="about.html" class="nav-link">О нас</a></li>
+                <li><a href="contacts.html" class="nav-link active">Контакты</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
     <main class="container">
     <!-- Простые "хлебные крошки" -->

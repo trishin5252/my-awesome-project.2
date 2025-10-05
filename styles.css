@@ -341,3 +341,50 @@ body.theme-dark {
 .theme-dark label {
     color: #f5f5f5;
 }
+
+/* Улучшение видимости полей формы на мобильных */
+@media (max-width: 768px) {
+    .theme-dark input,
+    .theme-dark textarea,
+    .theme-dark select {
+        background: #000000;
+        color: #ffffff;
+        border: 2px solid #444;
+        font-size: 16px; /* Предотвращает зум в iOS */
+        padding: 12px 16px;
+    }
+    
+    .theme-dark input::placeholder,
+    .theme-dark textarea::placeholder {
+        color: #888;
+        font-size: 14px;
+    }
+    
+    .theme-dark label {
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    /* Улучшаем контрастность текста ошибок */
+    .theme-dark .error {
+        color: #ff6b6b;
+        font-weight: 500;
+        font-size: 14px;
+    }
+}
+
+/* Дополнительное улучшение для очень маленьких экранов */
+@media (max-width: 480px) {
+    .theme-dark input,
+    .theme-dark textarea,
+    .theme-dark select {
+        font-size: 18px;
+        padding: 14px 16px;
+    }
+}

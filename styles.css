@@ -287,3 +287,30 @@ body.theme-dark {
     border: 0;
     border-radius: var(--radius);
 }
+
+/* Стили для кнопок формы */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.form-actions button {
+    width: auto;
+    min-width: 120px;
+    padding: 0.75rem 1.5rem;
+}
+
+.form-actions button[type="button"] {
+    background: var(--color-muted);
+    color: var(--color-fg);
+}
+
+.form-actions button[type="button"]:hover {
+    background: #888;
+}
+
+.form-actions button[type="submit"] {
+    background: var(--color-primary);
+    color: white;
+}

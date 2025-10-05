@@ -68,10 +68,6 @@
 }
 
 /* Адаптивное меню для мобильных */
-@media (max-width: 768px) {
-    .header {
-        padding: 1rem;
-    }
     
     .nav-container {
         flex-direction: column;
@@ -108,10 +104,6 @@
 }
 
 /* Для очень маленьких экранов */
-@media (max-width: 480px) {
-    .header {
-        padding: 0.75rem;
-    }
     
     .logo {
         font-size: 1.3rem;
@@ -120,5 +112,73 @@
     .nav-link {
         padding: 0.875rem;
         font-size: 1rem;
+    }
+}
+
+/* Адаптивное меню для мобильных */
+@media (max-width: 768px) {
+    .header {
+        padding: 0.75rem 1rem;
+        position: relative;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: stretch;
+    }
+    
+    .logo {
+        font-size: 1.4rem;
+        text-align: center;
+        order: 1;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        order: 2;
+        margin: 0;
+    }
+    
+    .nav-link {
+        display: block;
+        text-align: center;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 1px solid #444;
+        background: rgba(40, 40, 40, 0.9);
+        margin: 0;
+    }
+    
+    .nav-link:hover {
+        transform: none;
+        background: rgba(106, 47, 255, 0.4);
+    }
+    
+    .nav-link::after {
+        display: none;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .header {
+        padding: 0.5rem;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .nav-link {
+        padding: 0.875rem 0.5rem;
+        font-size: 0.95rem;
+    }
+    
+    .nav-menu {
+        gap: 0.25rem;
     }
 }

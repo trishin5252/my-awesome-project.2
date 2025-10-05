@@ -8,9 +8,8 @@
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="theme-dark">
     <!-- Переключатель темы -->
-    <button class="theme-toggle" type="button" aria-pressed="false">��� Тема</button>
 
     <!-- Шапка сайта -->
     <header>
@@ -99,33 +98,4 @@
     <script src="main.js"></script>
     <script>
         // Переключение темы
-        const KEY = 'theme';
-        const btn = document.querySelector('.theme-toggle');
-        const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        if (localStorage.getItem(KEY) === 'dark' || (!localStorage.getItem(KEY) && preferDark)) {
-            document.body.classList.add('theme-dark');
-            btn?.setAttribute('aria-pressed', 'true');
-            btn.textContent = '☀️ Тема';
-        }
-
-        btn?.addEventListener('click', () => {
-            const isDark = document.body.classList.toggle('theme-dark');
-            btn.setAttribute('aria-pressed', String(isDark));
-            localStorage.setItem(KEY, isDark ? 'dark' : 'light');
-            btn.textContent = isDark ? '☀️ Тема' : '��� Тема';
-        });
-
-        // Модалка
-        document.getElementById('openDialog').addEventListener('click', () => {
-            document.getElementById('contactDialog').showModal();
-        });
-        document.getElementById('openDialog2').addEventListener('click', () => {
-            document.getElementById('contactDialog').showModal();
-        });
-        document.getElementById('closeDialog').addEventListener('click', () => {
-            document.getElementById('contactDialog').close();
-        });
-    </script>
-</body>
-</html>
+<script>localStorage.removeItem("theme");</script>

@@ -48,9 +48,8 @@
         }
     </style>
 </head>
-<body>
+<body class="theme-dark">
     <!-- Переключатель темы -->
-    <button class="theme-toggle" type="button" aria-pressed="false">��� Тема</button>
 
     <header>
     <a href="/">Company 52</a>
@@ -84,24 +83,4 @@
 
     <!-- Скрипт переключения темы -->
     <script>
-        const KEY = 'theme';
-        const btn = document.querySelector('.theme-toggle');
-        const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        // Автовыбор: системная тема или сохранённый выбор пользователя
-        if (localStorage.getItem(KEY) === 'dark' || (!localStorage.getItem(KEY) && preferDark)) {
-            document.body.classList.add('theme-dark');
-            btn?.setAttribute('aria-pressed', 'true');
-            btn.textContent = '☀️ Тема';
-        }
-
-        // Переключение по кнопке с сохранением в localStorage
-        btn?.addEventListener('click', () => {
-            const isDark = document.body.classList.toggle('theme-dark');
-            btn.setAttribute('aria-pressed', String(isDark));
-            localStorage.setItem(KEY, isDark ? 'dark' : 'light');
-            btn.textContent = isDark ? '☀️ Тема' : '��� Тема';
-        });
-    </script>
-</body>
-</html>
+<script>localStorage.removeItem("theme");</script>
